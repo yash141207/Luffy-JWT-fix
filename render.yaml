@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ff-jwt-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker -w 2 --bind 0.0.0.0:$PORT api:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
